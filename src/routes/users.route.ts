@@ -6,6 +6,8 @@ import UserRepository from '../repositories/user.repository';
 const usersRoute = Router();
 
 usersRoute.get('/users', async (req: express.Request, res: express.Response, next: NextFunction) => {
+
+	console.log(req.headers['authorization']);
 	const users = await UserRepository.findAllUsers();
 	res.status(StatusCodes.OK).send(users);
 });
